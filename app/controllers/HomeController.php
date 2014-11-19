@@ -14,15 +14,20 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+    private $vars = array();
 
-	public function index()
-	{
-		return View::make('about');
-	}
+    public function index()
+    {
+        $this->vars['page'] = 'index';
+        return View::make('index', $this->vars);
+    }
 
     public function about()
     {
-        return View::make('index');
+        $this->vars['page'] = 'about';
+        return View::make('about', $this->vars);
     }
+    
+    
 
 }
