@@ -12,9 +12,9 @@
                <div class="row">
                     <div class="office_address col-sm-4 col-md-4">
                          <div class="team_member">
-                         	<img src="images/restart_logo.png" width="90" height="90" alt="logo">
-                         	<h5>{re}start, HTML</h5>
-                              <small>Web-Development Company</small><br><br>
+                         	<img src="images/dbr_logo.png" width="160" height="90" alt="logo">
+                         	<h5></h5>
+                              <small>Corredora de Propiedades</small><br><br>
                               <div class="team_social"> <a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a> <a href="https://twitter.com/leonartgr"><i class="fa fa-twitter"></i></a> <a href="#pinterest"><i class="fa fa-linkedin"></i></a> <a href="https://github.com/PlethoraThemes"><i class="fa fa-github-alt"></i></a> </div>
                               <address>
                               <strong></strong><br>

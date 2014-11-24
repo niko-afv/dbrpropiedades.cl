@@ -6485,9 +6485,9 @@ figure img {
 ------------ */
 .team_member {
   text-align: center;
-  background-color: #000;
-  background-color: #222222;
-  background: url(images/backgrounds/wild_oliva_dark.png);
+ /* background-color: #000;*/
+  background-color: #fff;
+  background: url(images/backgrounds/wild_oliva_light.png);
   color: #cccccc;
   padding: 40px;
   -webkit-transition: all 500ms linear;
