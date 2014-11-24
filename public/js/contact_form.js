@@ -8,7 +8,7 @@ $(document).ready(function() {
         var user_message    = $('#message').val();
         
         var notice     = $("#notice");
-        var $req_fields    = "Please fill in all the fields.";
+        var $req_fields    = "Por favor, llene todos los campos.";
 
         //simple validation at client's end
         var proceed = true;

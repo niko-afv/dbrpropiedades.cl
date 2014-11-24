@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'forge',
-			'username'  => 'forge',
-			'password'  => '',
+			'host'      => 'mysql.devel.dbrpropiedades.cl',
+			'database'  => 'dbrpropiedades',
+			'username'  => 'dbrpropiedades',
+			'password'  => 'dbrpr0p13d4d3s',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

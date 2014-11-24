@@ -28,6 +28,26 @@ class HomeController extends BaseController {
         return View::make('about', $this->vars);
     }
     
+    public function propiedades()
+    {
+        $this->vars['page'] = 'propiedades';
+
+        $propiedades = Propiedad::get();
+        $xregion = Propiedad::find(1)->region()->get();
+        $regiones = Region::getRegionesConPropiedades();
+
+        return View::make('propiedades', $this->vars, array(
+            'propiedades' => $propiedades,
+            'regiones'  => $regiones
+        ));
+    }
+
+    public function contacto()
+    {
+        $this->vars['page'] = 'contacto';
+        return View::make('contact', $this->vars);
+    }
+    
     
 
 }

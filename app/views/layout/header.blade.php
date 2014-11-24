@@ -15,10 +15,10 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav pull-right navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/about">Quienes Somos</a></li>
-                <li><a href="javascript:void(0);">Propiedades</a></li>
-                <li><a href="javascript:void(0);">Contacto</a></li>
+                <li class="@if ($page == 'index'){{ 'active' }}@endif"><a href="/">Home</a></li>
+                <li class="@if ($page == 'about'){{ 'active' }}@endif"><a href="/about">Quienes Somos</a></li>
+                <li class="@if ($page == 'propiedades'){{ 'active' }}@endif"><a href="/propiedades">Propiedades</a></li>
+                <li class="@if ($page == 'contacto'){{ 'active' }}@endif"><a href="/contacto">Contacto</a></li>
                 <!--<li><a href="javascript:void(0);">Blog</a></li>
                 <li><a href="javascript:void(0);">Contact</a></li>
                 <li class="dropdown"> <a data-toggle="dropdown" class="dropdown-toggle" href="#">Pages<span class="caret"></span></a>
@@ -49,5 +49,5 @@
             <i class="fa fa-google-plus"></i>
         </a>
     </div>-->
-    <div id="sign"><a href="javascript:void(0)"><i class="fa fa-user"></i><span>Administrador</span></a></div>
+    <div id="sign"><a href="/admin"><i class="fa fa-user"></i><span>Administrador</span></a></div>
 </div>
