@@ -17,7 +17,7 @@
                         <ul class="slides">
                             @if (!count($galeria)>0 )
                                 <li class="item" data-thumb="/images/no-photo.png" style="background-image: url(/images/no-photo.png)">
-                                    <div class="container"> <a href="/images/no-photo.png" rel="prettyPhoto[gal]"></a>
+                                    <div class="container">
                                         <div class="carousel-caption">
                                             <p class="lead">Esta propieda no tiene imagenes disponibles</p>
                                         </div>
@@ -36,6 +36,7 @@
                             @endif
                         </ul>
                     </div>
+                    @if (count($galeria)>0 )
                     <div id="carousel" class="flexslider">
                         <ul class="slides">
                             @foreach ($galeria as $imagen)
@@ -43,6 +44,7 @@
                             @endforeach
                         </ul>
                     </div>
+                    @endif
                 </section>
             </div>
             <div class="col-sm-4 col-md-4">
