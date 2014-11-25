@@ -30,14 +30,22 @@
                                     <path d="M 180,0 0,0 0,0 180,0 z"/>
                                </svg>
                                <figcaption>
-                                    <p>Description of the project dapibus, tellus ac cursus commodo, mauesris condime ntum nibh, ut fermentum....</p>
+                                    <p>
+                                        <strong>Superficie Útil:</strong> {{ $propiedad->SUPERFICIE_UTIL }}m2
+                                        <br/>
+                                        <strong>Valor:</strong> ${{ $propiedad->VALOR }}
+                                        <br/>
+                                        <strong>Habitaciones:</strong> {{ $propiedad->HABITACIONES }}
+                                        <br/>
+                                        <strong>Baños:</strong> {{ $propiedad->BAÑOS }}
+                                    </p>
                                     <div class="view_button">View</div>
                                </figcaption>
                           </figure>
                           </a>
                           <div class="portfolio_description">
                                <h3><a href="portfolio_item.html">{{ $propiedad['NOMBRE'] }}</a></h3>
-                               <p>travel</p>
+
                           </div>
                      </div>
                 </div>

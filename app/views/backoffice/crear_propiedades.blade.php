@@ -22,7 +22,7 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Especialidades <small>Crear nueva especialidad</small></h5>
+                        <h5>Propiedades <small>Crear nueva propiedad</small></h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -56,7 +56,7 @@
                         </div>
 
                     </div>
-                    <form role="form" method="POST" action="/admin/especialidad/guardar">
+                    <form role="form" method="POST" action="/admin/propiedades/crear">
                         <div class="row">
                             <div class="col-sm-6 b-r">
 
@@ -107,7 +107,7 @@
                                     <label>Lógia</label>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" value="">
+                                            <input type="checkbox" value="" name="logia">
                                             ¿La propiedad cuenta con lógia?
                                         </label>
                                     </div>
@@ -115,10 +115,10 @@
 
                                 <div class="form-group">
                                     <label>Tipo Propiedad</label>
-                                    <select class="form-control" name="institucion" id="institucion">
+                                    <select class="form-control" name="tipo" id="tipo">
                                         <option value="0">Seleccionar Tipo Propiedad</option>
-                                        <option value="0">Casa</option>
-                                        <option value="0">Departamento</option>
+                                        <option value="1">Casa</option>
+                                        <option value="2">Departamento</option>
                                         <?php /*foreach($instituciones as $item => $val){ ?>
                                             <option value="<?php echo ($val['ID']);?>"><?php echo ($val['NOMBRE']);?></option>
                                         <?php }*/?>
@@ -127,10 +127,10 @@
 
                                 <div class="form-group">
                                     <label>Tipo Transacción</label>
-                                    <select class="form-control" name="institucion" id="institucion">
+                                    <select class="form-control" name="transaccion" id="transaccion">
                                         <option value="0">Seleccionar Tipo Transacción</option>
-                                        <option value="0">Arriendo</option>
-                                        <option value="0">Venta</option>
+                                        <option value="2">Arriendo</option>
+                                        <option value="1">Venta</option>
                                         <?php /*foreach($instituciones as $item => $val){ ?>
                                             <option value="<?php echo ($val['ID']);?>"><?php echo ($val['NOMBRE']);?></option>
                                         <?php }*/?>
@@ -139,10 +139,10 @@
 
                                 <div class="form-group">
                                     <label>Región</label>
-                                    <select class="form-control" name="institucion" id="institucion">
+                                    <select class="form-control" name="region" id="region">
                                         <option value="0">Seleccionar Región</option>
-                                        <option value="0">Metropolitana</option>
-                                        <option value="0">Valparaiso</option>
+                                        <option value="2">Metropolitana</option>
+                                        <option value="1">Valparaiso</option>
                                         <?php /*foreach($instituciones as $item => $val){ ?>
                                             <option value="<?php echo ($val['ID']);?>"><?php echo ($val['NOMBRE']);?></option>
                                         <?php }*/?>

@@ -11,7 +11,7 @@
                                 <li><a href="/admin/profile">Perfil</a></li>
                                 <li><a href="/" target="_blank">Sitio Web</a></li>
                                 <li class="divider"></li>
-                                <li><a href="/backofficelogin.html">Salir</a></li>
+                                <li><a href="/logout">Salir</a></li>
                             </ul>
                         </div>
                         <div class="logo-element">

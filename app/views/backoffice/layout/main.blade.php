@@ -16,6 +16,10 @@
 
     <!-- Gritter -->
     <link href="/backoffice/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    
+    <!--DropZone-->
+    <link href="/backoffice/css/plugins/dropzone/basic.css" rel="stylesheet">
+    <link href="/backoffice/css/plugins/dropzone/dropzone.css" rel="stylesheet">
 
     <link href="/backoffice/css/animate.css" rel="stylesheet">
     <link href="/backoffice/css/style.css" rel="stylesheet">
@@ -188,8 +192,8 @@
                 animateScale: false,
             };
 
-            var ctx = document.getElementById("doughnutChart").getContext("2d");
-            var DoughnutChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);
+            /*var ctx = document.getElementById("doughnutChart").getContext("2d");
+            var DoughnutChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);*/
 
             var polarData = [
                 {
@@ -227,10 +231,11 @@
                 animateRotate: true,
                 animateScale: false,
             };
-            var ctx = document.getElementById("polarChart").getContext("2d");
-            var Polarchart = new Chart(ctx).PolarArea(polarData, polarOptions);
+            //var ctx = document.getElementById("polarChart").getContext("2d");
+            //var Polarchart = new Chart(ctx).PolarArea(polarData, polarOptions);
 
         });
     </script>
+    @yield('customjs')
 </body>
 </html>
