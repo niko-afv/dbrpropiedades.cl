@@ -2,7 +2,7 @@
     <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">
-                <img src="images/dbr_logo.png" alt="dbrpropiedades.cl" height="90" width="160">
+                <img src="/images/dbr_logo.png" alt="dbrpropiedades.cl" height="90" width="160">
             </a>
             <a class="btn btn-navbar btn-default navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="nb_left pull-left">

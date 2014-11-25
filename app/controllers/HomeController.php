@@ -41,6 +41,18 @@ class HomeController extends BaseController {
             'regiones'  => $regiones
         ));
     }
+    
+    public function propiedades_ver($id_propiedad)
+    {
+        $propiedad = Propiedad::find($id_propiedad);
+        $propiedad->loadGaleria($propiedad->ID);
+        
+        $this->vars['page']      = 'propiedades';
+        $this->vars['propiedad'] = $propiedad;
+        $this->vars['galeria']   = $propiedad->getGaleria();
+
+        return View::make('propiedades_ver', $this->vars);
+    }
 
     public function contacto()
     {
