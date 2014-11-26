@@ -30,6 +30,7 @@ Route::group(array('before' => 'auth'), function()
     Route::get('/admin/propiedades/crear', 'AdminPropiedadesController@crear');
     Route::get('/admin/propiedades/ver/{id_propiedad}', 'AdminPropiedadesController@ver');
     Route::post('/admin/propiedades/crear', 'AdminPropiedadesController@guardar');
+    Route::post('/admin/propiedades/cargarImg', 'AdminPropiedadesController@cargarImg');
 });
 
 

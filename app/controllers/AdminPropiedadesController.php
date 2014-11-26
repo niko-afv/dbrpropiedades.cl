@@ -60,8 +60,10 @@ class AdminPropiedadesController extends BaseController {
         $propiedad['habitaciones'] = $oPropiedad->HABITACIONES;
         $propiedad['descripcion'] = $oPropiedad->DESCRIPCION;
         $propiedad['galeria'] = $oPropiedad->getGaleria();
-
-        $this->vars['img1'] = $propiedad['galeria'][0]['ID'];
+        
+        if($propiedad['galeria']){
+            $this->vars['img1'] = $propiedad['galeria'][0]['ID'];
+        }
         $this->vars['page'] = 'propiedades_ver';
         $this->vars['galeria'] = ($oPropiedad->countImagenes())?TRUE:FALSE;
         $this->vars['propiedad'] = $propiedad;

@@ -24,8 +24,17 @@
                 @foreach ($propiedades as $propiedad)
 
                 <div class="{{ $propiedad['REGION'] }} col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                     <div class="portfolio_item"> <a href="/propiedades/ver/{{ $propiedad['ID'] }}" data-path-hover="M 180,190 0,158 0,0 180,0 z">
-                          <figure style="background-image:url(images/portfolio/propiedades/SUITE_RD_Petra_La_Dehesa.jpg)">
+                    
+                    {{ $propiedad->loadGaleria($propiedad->ID)  }}
+                    <?php $galeria = $propiedad->getGaleria()     ?>
+                    
+                    
+                    <div class="portfolio_item"> <a href="/propiedades/ver/{{ $propiedad['ID'] }}" data-path-hover="M 180,190 0,158 0,0 180,0 z">
+                        @if (count($galeria)>0)  
+                        <figure style="background-image:url({{ $galeria[0]['URL'] }})">
+                        @else
+                        <figure style="background-image:url(/images/no-photo.png)">
+                        @endif
                                <svg viewBox="0 0 180 320" preserveAspectRatio="none">
                                     <path d="M 180,0 0,0 0,0 180,0 z"/>
                                </svg>
@@ -45,7 +54,6 @@
                           </a>
                           <div class="portfolio_description">
                                <h3><a href="/propiedades/ver/{{ $propiedad['ID'] }}">{{ $propiedad['NOMBRE'] }}</a></h3>
-
                           </div>
                      </div>
                 </div>
