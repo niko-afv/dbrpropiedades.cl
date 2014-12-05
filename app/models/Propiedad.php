@@ -27,6 +27,10 @@ class Propiedad extends Eloquent{
     private $region;
     private $visitas;
 
+    public function __construct(){
+        $this->galeria = new ArrayObject();
+    }
+
     public function getVisitas(){return $this->visitas;}
     public function setVisitas($visitas){$this->visitas = $visitas;}
 
@@ -42,6 +46,14 @@ class Propiedad extends Eloquent{
         $this->setSuperficieTerreno($dbPropiedad->SUPERFICIE_TERRENO);
         $this->setRegion($dbPropiedad->REGION);
         $this->setVisitas($dbPropiedad->VISITAS);
+        $this->setDescripcion($dbPropiedad->DESCRIPCION);
+
+        $imagenes = Imagen::where('PROPIEDAD',$this->getId())
+            ->get()
+            ->toArray();
+        foreach($imagenes as $imagen){
+            $this->addImagen($imagen);
+        }
     }
     public function getId(){return $this->id; }
     public function getBaños(){return $this->baños;}
@@ -76,7 +88,6 @@ class Propiedad extends Eloquent{
     }
 
     public function loadGaleria($id){
-        $this->galeria = new ArrayObject();
         $fotos = Imagen::where('PROPIEDAD',$id)->get()->toArray();
 
         foreach( $fotos as $foto){
@@ -114,8 +125,13 @@ class Propiedad extends Eloquent{
         $array['logia'] = $this->getLogia();
         $array['descripcion'] = $this->getDescripcion();
         $array['visitas']   = $this->getVisitas();
-
         $array['region']    = $this->getRegion()->toArray();
+
+        $array['imagenes'] = array();
+
+        for( $i = 0 ; $i < $this->countImagenes() ; $i++ ){
+            $array['imagenes'][] = $this->getImagen($i)['URL'];
+        }
         return $array;
     }
 } 

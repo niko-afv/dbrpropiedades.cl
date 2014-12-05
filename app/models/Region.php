@@ -17,6 +17,7 @@ class Region extends Eloquent{
         $result = DB::table('PROPIEDADES')
             ->join('REGIONES', 'PROPIEDADES.REGION', '=', 'REGIONES.ID')
             ->select('REGIONES.ID', 'REGIONES.NOMBRE')
+            ->groupBy('ID')
             ->get();
         return $result;
     }

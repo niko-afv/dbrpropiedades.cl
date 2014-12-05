@@ -10,9 +10,10 @@ class HelperListarPropiedad extends Eloquent{
 
     private $propiedadesList;
 
-    public function __construct(){
+    public function __construct($load = TRUE){
         $this->propiedadesList = new ArrayObject();
-        $this->loadPropiedades();
+        if($load)
+            $this->loadPropiedades();
     }
 
     public function addPropiedad($oPropiedad){
@@ -37,6 +38,21 @@ class HelperListarPropiedad extends Eloquent{
         foreach($dbPropiedades as $dbPropiedad){
             $oPropiedad = new Propiedad();
             $oPropiedad->setId($dbPropiedad->ID);
+            $this->addPropiedad($oPropiedad);
+        }
+    }
+
+    public function getTopPropiedades(){
+        $propiedades = DB::table('PROPIEDADES')
+            ->select(array("ID",DB::raw('max(VISITAS) as VISITAS')))
+            ->groupBy('ID')
+            ->take(3)
+            ->get()
+        ;
+
+        foreach($propiedades as $propiedad){
+            $oPropiedad = new Propiedad();
+            $oPropiedad->setId($propiedad->ID);
             $this->addPropiedad($oPropiedad);
         }
     }

@@ -6,7 +6,12 @@ class HomeController extends BaseController {
 
     public function index()
     {
+        $topPropiedades = new HelperListarPropiedad(FALSE);
+        $topPropiedades->getTopPropiedades();
+
         $this->vars['page'] = 'index';
+        $this->vars['topPropiedades'] = $topPropiedades->toArray();
+        
         return View::make('index', $this->vars);
     }
 
