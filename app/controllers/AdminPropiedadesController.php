@@ -42,6 +42,10 @@ class AdminPropiedadesController extends BaseController {
             
             return Redirect::to('/admin/propiedades/ver/'.$oPropiedad->ID)->with('success', $messege);
     }
+
+    public function editar($id){
+
+    }
     
     public function ver($id){
         $oPropiedad = Propiedad::find($id);
@@ -60,6 +64,7 @@ class AdminPropiedadesController extends BaseController {
         $propiedad['habitaciones'] = $oPropiedad->HABITACIONES;
         $propiedad['descripcion'] = $oPropiedad->DESCRIPCION;
         $propiedad['galeria'] = $oPropiedad->getGaleria();
+        $propiedad['visitas'] = $oPropiedad->VISITAS;
         
         if($propiedad['galeria']){
             $this->vars['img1'] = $propiedad['galeria'][0]['ID'];
@@ -72,6 +77,16 @@ class AdminPropiedadesController extends BaseController {
         return View::make('backoffice/ver_propiedad', $this->vars);
     }
 
+    public function listar(){
+        $oPropiedades = new HelperListarPropiedad();
+
+
+        $this->vars['page'] = "propiedades_listar";
+        $this->vars['propiedades'] = $oPropiedades->toArray();
+
+        return View::make('backoffice/listar_propiedades', $this->vars);
+    }
+
 
     public function cargarImg(){
         try{
@@ -82,6 +97,8 @@ class AdminPropiedadesController extends BaseController {
             }
 
             $file = Input::file('file');
+            $file = $file[0];
+
             $uploadSuccess = $file->move($upload_dir,$this->convert_string($file->getClientOriginalName()));
 
             $oImagen = new Imagen();
@@ -90,11 +107,60 @@ class AdminPropiedadesController extends BaseController {
             $oImagen->PROPIEDAD = Input::get('id');
             $oImagen->save();
 
-            return Response::json('success', 200);
+            $response['data'] = array(
+                'imgPath' => $oImagen->URL,
+                'imgId' => $oImagen->ID,
+            );
+            $response['error'] = FALSE;
+            $response['critic'] = FALSE;
+            $response['msg'] ="Imagen agregada con exito";
+
 
         } catch (Exception $ex) {
-            return Response::json($ex->getMessage(), 400);
+            $response['error'] = TRUE;
+            $response['critic'] = TRUE;
+            $response['msg'] = $ex->getMessage();
         }
+        return Response::json($response, 200);
+    }
+
+    function deleteImg(){
+        try{
+            $response = array();
+            $imgId = Input::get('imgId');
+
+            $oImg = Imagen::find($imgId);
+
+            $imgPath = $oImg->PATH;
+            //$exec = $oImg->delete();
+            $exec = DB::table('IMAGENES')->where('ID', '=', $imgId)->delete();
+            
+            if($exec){
+                $delete = File::delete($imgPath);
+                if($delete){
+                    $response['data'] = array(
+                        'imgPath' => $imgPath,
+                        'imgId' => $imgId,
+                    );
+                    $response['error'] = FALSE;
+                    $response['critic'] = FALSE;
+                    $response['msg'] ="Imagen Eliminada con exito";
+                }else{
+                    $response['error'] = TRUE;
+                    $response['critic'] = FALSE;
+                    $response['msg'] ="No se pudo eliminar la imagen";
+                }
+            }else{
+                $response['error'] = TRUE;
+                $response['critic'] = TRUE;
+                $response['msg'] ="No se pudo eliminar el registro";
+            }
+        }catch (Exception $e){
+            $response['error'] = TRUE;
+            $response['critic'] = TRUE;
+            $response['msg'] = $e->getMessage();
+        }
+        return Response::json($response, 200);
     }
 
     function convert_string($str) {

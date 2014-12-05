@@ -1,6 +1,6 @@
 @extends('backoffice.layout.main')
 @section('content')
-        
+
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
             <h2>Propiedad : </h2>
@@ -14,7 +14,7 @@
             </ol>
         </div>
     </div>
-            
+
     <div class="wrapper wrapper-content">
         <div class="row">
             <div class="col-md-12">
@@ -29,18 +29,12 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-wrench"></i>
                                 </a>
-                                
+
                                 <ul class="dropdown-menu dropdown-user">
                                     <li>
                                         <a data-toggle="modal" href="#portada-form" title="Agregar Imagenes">
                                             <i class="fa fa-plus"></i>
                                             &nbsp;&nbsp; Agregar mas Imagenes
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-trash-o"></i>
-                                            &nbsp;&nbsp; Eliminar Imagenes
                                         </a>
                                     </li>
                                 </ul>
@@ -51,10 +45,11 @@
                             <img src="/images/no-photo.png"    />
                             @else
                             <div class="carousel slide" id="carousel1">
-                                <div class="carousel-inner">
+                                <div class="carousel-inner" id="galeria">
                                     @foreach ($propiedad['galeria'] as $imagen)
-                                    <div class="item @if ($img1 == $imagen['ID']) active  @endif">
+                                    <div id="{{ $imagen['ID'] }}" class="item @if ($img1 == $imagen['ID']) active  @endif">
                                         <img alt="image" class="" src="{{ $imagen['URL'] }}" width="702" height="250">
+                                        <a class="deleteImg" data-owner="{{ $imagen['ID'] }}" href="#">Eliminar Imagen</a>
                                     </div>
                                     @endforeach
                                 </div>
@@ -73,6 +68,24 @@
                     <div class="ibox">
                         <div class="ibox-title">
                             <h5>Detalles Propiedad</h5>
+
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li>
+                                        <a data-toggle="modal" href="/propiedades/editar/{{ $propiedad['id'] }}" title="Editar Propiedad">
+                                            <i class="fa fa-edit"></i>
+                                            &nbsp;&nbsp; Editar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="ibox-content">
                             <!--<div class="col-md-4">-->
@@ -82,7 +95,7 @@
                                         <span>{{ $propiedad['nombre'] }}</span>
                                     </p>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <p>
                                         <label>Dirección:</label>
@@ -116,12 +129,12 @@
                                     <label>Baños:</label>
                                     <span>{{ $propiedad['baños'] }}</span>
                                 </div>
-                            
+
                                 <div class="form-group">
                                     <label>Habitaciones:</label>
                                     <span>{{ $propiedad['habitaciones'] }}</span>
                                 </div>
-                            
+
                                 <div class="form-group">
                                     <label>Descripción:</label>
                                     <p>{{ $propiedad['descripcion'] }}</p>
@@ -157,8 +170,8 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-12">
-                <div class="wrapper wrapper-content">
+            <div class="col-lg-6">
+
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Otras Caracteristicas</h5>
@@ -170,7 +183,19 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                </div>            
+
+            </div>
+
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">Today</span>
+                        <h5>Visitas</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{ $propiedad['visitas'] }}</h1>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -189,41 +214,18 @@
                             <div class="ibox-content">
                                 <form id="my-awesome-dropzone" class="dropzone" action="/admin/propiedades/cargarImg">
 
+                                    <div class="fallback"><input name="file" type="file" multiple /></div>
+                                    <div class="dropzone-previews"></div>
+
                                     <input  type="hidden" name="dir" value="{{ $upload_dir }}">
                                     <input  type="hidden" name="id" value="{{ $propiedad['id'] }}">
-
-
-
-
-                                    <div class="dz-preview dz-processing dz-image-preview dz-success">
-                                        <div class="dz-details">
-                                            <div class="dz-filename">
-                                                <span data-dz-name="">
-                                                    departamento_en_venta_1_ambiente_46_m2_43_m2c_impecable_monoambiente_en_venta_lindblom_propiedades_100565892618725387.jpg
-                                                </span>
-                                            </div>
-                                            <div data-dz-size="" class="dz-size">
-                                                <strong>0.1</strong> MiB
-                                            </div>
-
-                                            <img data-dz-thumbnail="" alt="" src="">
-                                        </div>
-                                        <div class="dz-progress">
-                                            <span data-dz-uploadprogress="" class="dz-upload" style="width: 100%;"></span>
-                                        </div>
-                                        <div class="dz-success-mark"><span>✔</span></div>
-                                        <div class="dz-error-mark"><span>✘</span></div>
-                                        <div class="dz-error-message"><span data-dz-errormessage=""></span></div>
-                                    </div>
-
-
                                 </form>
                             </div>
                         </div>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 
 @stop
@@ -232,22 +234,62 @@
 @section('customjs')
     <!-- DROPZONE -->
     <script src="/backoffice/js/plugins/dropzone/dropzone.js"></script>
+    <!--Document Ready-->
     <script type="text/javascript">
         $(document).ready(function(){
-            
+
             Dropzone.options.myAwesomeDropzone = {
                 maxFilesize: 100, // MB
                 autoProcessQueue: true,
-                uploadMultiple: false,
+                uploadMultiple: true,
                 parallelUploads: 1,
-                maxFiles: 1,
+                maxFiles: 3,
                 acceptedFiles: ".jpeg, .png, .jpg, .gif",
                 addRemoveLinks: true,
                 init: function() {
                     this.on("error", function(file, message) { alert("Error: " + message); });
+                },
+                success: function(e,response){
+                    if(!response.error){
+                        $("#galeria").append(generateHtml(response.data.imgId, response.data.imgPath));
+                    }
                 }
             };
-        });http://devel.dbrpropiedades.cl/admin/propiedades/ver/1
+
+            $(".deleteImg").on("click", function(e){
+                e.preventDefault();
+                var imgId =$(this).attr("data-owner");
+                var url = "/admin/propiedades/deleteImg";
+
+
+                if($("#galeria .item").length == 1){
+                     $("#galeria").append(generateHtml(0,"/images/no-photo.png"));
+                }
+                $("#carousel1").carousel('next');
+                deleteImg(imgId, url, function(response){
+                    id = response.data.imgId;
+                    //window.location.reload()
+                    $("#"+id).remove();
+                })
+            });
+
+            function deleteImg(imgId, url, callback){
+                $.post(url, {imgId: imgId}, function(response){
+                    if(!response.error){
+                        if( $.isFunction(callback)){
+                            callback(response);
+                        }
+                    }
+                });
+            }
+
+            function generateHtml(imgId, imgPath){
+                var html = "<div id='" + imgId + "' class='item'>";
+                html += "<img alt='image' class='' src='"+ imgPath +"' width='702' height='250'>";
+                html += "<a class='deleteImg' data-owner='" + imgId + "' href='#'>Eliminar Imagen</a>";
+                html += "</div>";
+                return html;
+            }
+        });
     </script>
 @stop
-

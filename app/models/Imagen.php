@@ -9,5 +9,6 @@
 class Imagen extends Eloquent{
 
     protected $table = 'IMAGENES';
+    public $primaryKey = 'ID';
     public $timestamps = false;
 } 

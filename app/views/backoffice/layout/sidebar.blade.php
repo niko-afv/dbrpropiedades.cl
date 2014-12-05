@@ -19,19 +19,19 @@
                         </div>
 
                     </li>
-                    <li class="active">
+                    <li class="@if($page == 'inicio') {{ 'active' }}@endif">
                         <a>Inicio</a>
                     </li>
-                    <li>
+                    <li class="@if(strstr($page, "propiedades")) {{ 'active' }}@endif">
                         <a href="/admin/propiedades"><i class="fa fa-th-large"></i> <span class="nav-label">Propiedades</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="active">
+                            <li class="@if($page == 'propiedades_listar') {{ 'active' }}@endif">
                                 <a href="/admin/propiedades/listar">
                                     <i class="fa fa-list"></i>
                                     Listar
                                 </a>
                             </li>
-                            <li>
+                            <li class="@if($page == 'propiedades_crear') {{ 'active' }}@endif">
                                 <a href="/admin/propiedades/crear">
                                     <i class="fa fa-plus"></i>
                                     Crear

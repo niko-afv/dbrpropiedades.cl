@@ -27,35 +27,33 @@
                     
                     {{ $propiedad->loadGaleria($propiedad->ID)  }}
                     <?php $galeria = $propiedad->getGaleria()     ?>
-                    
-                    
+
                     <div class="portfolio_item"> <a href="/propiedades/ver/{{ $propiedad['ID'] }}" data-path-hover="M 180,190 0,158 0,0 180,0 z">
-                        @if (count($galeria)>0)  
+                        @if (count($galeria)>0)
                         <figure style="background-image:url({{ $galeria[0]['URL'] }})">
                         @else
                         <figure style="background-image:url(/images/no-photo.png)">
                         @endif
-                               <svg viewBox="0 0 180 320" preserveAspectRatio="none">
-                                    <path d="M 180,0 0,0 0,0 180,0 z"/>
-                               </svg>
-                               <figcaption>
-                                    <p>
-                                        <strong>Superficie Útil:</strong> {{ $propiedad->SUPERFICIE_UTIL }}m2
-                                        <br/>
-                                        <strong>Valor:</strong> ${{ $propiedad->VALOR }}
-                                        <br/>
-                                        <strong>Habitaciones:</strong> {{ $propiedad->HABITACIONES }}
-                                        <br/>
-                                        <strong>Baños:</strong> {{ $propiedad->BAÑOS }}
-                                    </p>
-                                    <div class="view_button">View</div>
-                               </figcaption>
-                          </figure>
-                          </a>
-                          <div class="portfolio_description">
-                               <h3><a href="/propiedades/ver/{{ $propiedad['ID'] }}">{{ $propiedad['NOMBRE'] }}</a></h3>
-                          </div>
-                     </div>
+                            <svg viewBox="0 0 180 320" preserveAspectRatio="none">
+                                <path d="M 180,0 0,0 0,0 180,0 z"/>
+                            </svg>
+                            <figcaption>
+                                <p>
+                                    <strong>Superficie Útil:</strong> {{ $propiedad->SUPERFICIE_UTIL }}m2
+                                    <br/>
+                                    <strong>Valor:</strong> ${{ $propiedad->VALOR }}
+                                    <br/>
+                                    <strong>Habitaciones:</strong> {{ $propiedad->HABITACIONES }}
+                                    <br/>
+                                    <strong>Baños:</strong> {{ $propiedad->BAÑOS }}
+                                </p>
+                                <div class="view_button">Ver Más</div>
+                            </figcaption>
+                        </figure>
+                        <div class="portfolio_description">
+                            <h3><a href="/propiedades/ver/{{ $propiedad['ID'] }}">{{ $propiedad['NOMBRE'] }}</a></h3>
+                        </div>
+                    </div>
                 </div>
 
                 @endforeach

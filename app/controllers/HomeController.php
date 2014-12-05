@@ -30,9 +30,11 @@ class HomeController extends BaseController {
         ));
     }
     
-    public function propiedades_ver($id_propiedad)
+    public function propiedad_ver($id_propiedad)
     {
         $propiedad = Propiedad::find($id_propiedad);
+        $visitas = $propiedad->VISITAS +1;
+        Propiedad::where('ID', '=',$id_propiedad )->update(array('VISITAS' => $visitas));
         $propiedad->loadGaleria($propiedad->ID);
         
         $this->vars['page']      = 'propiedades';
@@ -40,6 +42,11 @@ class HomeController extends BaseController {
         $this->vars['galeria']   = $propiedad->getGaleria();
 
         return View::make('propiedades_ver', $this->vars);
+    }
+    
+    public function propiedad_contacto(){
+        $post = Input::get();
+        print_r($post);
     }
 
     public function contacto()
