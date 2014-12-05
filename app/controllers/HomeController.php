@@ -55,6 +55,12 @@ class HomeController extends BaseController {
         return View::make('contact', $this->vars);
     }
     
+    public function simulador(){
+        $this->vars['page'] = 'simulador';
+        return View::make('simulador', $this->vars);
+        //echo "http://simuladordesubsidio.minvu.cl/";
+    }
+    
     
 
 }

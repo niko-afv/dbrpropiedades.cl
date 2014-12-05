@@ -18,6 +18,8 @@ Route::get('/propiedades', 'HomeController@propiedades');
 Route::get('/propiedades/ver/{id_propiedad}', 'HomeController@propiedad_ver');
 Route::post('/propiedades/contacto', 'HomeController@propiedadContacto');
 
+Route::get('/simulador', 'HomeController@simulador');
+
 Route::get('/login', 'LoginController@showLogin');
 Route::post('/login', 'LoginController@doLogin');
 Route::get('/logout', 'LoginController@doLogout');
