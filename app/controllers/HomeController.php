@@ -59,13 +59,17 @@ class HomeController extends BaseController {
         $this->vars['page'] = 'contacto';
         return View::make('contact', $this->vars);
     }
+
+    public function contacto_enviar(){
+        $post = Input::get();
+        Mail::send('emails.auth.reminder', $post, function($message) {
+            $message->to(Input::get('UserEmail'), Input::get('userName'))->subject(Input::get('userSubject'));
+        });
+    }
     
     public function simulador(){
         $this->vars['page'] = 'simulador';
         return View::make('simulador', $this->vars);
         //echo "http://simuladordesubsidio.minvu.cl/";
     }
-    
-    
-
 }

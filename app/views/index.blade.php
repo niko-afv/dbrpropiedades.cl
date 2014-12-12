@@ -42,6 +42,7 @@
         </h2>
         <div class="clients_list">
             <a href="/simulador"><img src="images/banner_simulador.png" alt="Simulador de Subsidios"></a>
+            <a href="javascript:void(0);"><img src="images/chile_atiende.png" alt="Chile Atiende"></a>
         </div>
     </section>
 @stop
