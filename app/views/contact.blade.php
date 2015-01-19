@@ -45,23 +45,23 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-6">
                             <label>Nombre</label>
-                            <input name="name" id="name" class="form-control" type="text" value="Nicolás Fredes">
+                            <input name="name" id="name" class="form-control" type="text" value="">
                         </div>
                         <div class="col-sm-6 col-md-6">
                             <label>E-mail</label>
-                            <input name="email" id="email" class="form-control" type="text" value="niko.afv@gmail.com">
+                            <input name="email" id="email" class="form-control" type="text" value="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
                             <label>Asunto</label>
-                            <input name="subject" id="subject" class="form-control" type="text" value="Testing">
+                            <input name="subject" id="subject" class="form-control" type="text" value="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
                             <label>Mensaje</label>
-                            <textarea name="message" id="message" rows="8" class="form-control">Testing Message</textarea>
+                            <textarea name="message" id="message" rows="8" class="form-control"><!--Testing Message--></textarea>
                         </div>
                         <div class="col-sm-12 col-md-12"><br/>
                             <a id="submit_btn" class="btn btn-primary" name="submit">Enviar Mensaje</a>
