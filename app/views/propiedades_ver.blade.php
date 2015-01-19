@@ -70,7 +70,11 @@
                     
                     <br>
                     <br>
-                    <a href="#formualario" rel="prettyPhoto" class="btn btn-primary center-block btn-lg">Contáctenos</a>
+                    <a href="javascript:void(0);" id="contact" class="btn btn-primary center-block btn-lg">Contáctenos</a>
+                    <!--
+                    href="#formualario"
+                    rel="prettyPhoto"
+                    -->
                 </article>
             </div>
             <style>
@@ -78,8 +82,8 @@
                     margin-top: -30px;
                 }*7
             </style>
-            <div style="display: none">
-                <div id="formualario" >
+            <div >
+                <div id="formualario" style="display: none">
                     
                     <div class="wrapper-content">
 
@@ -107,8 +111,12 @@
                                         <textarea name="message" id="message" rows="8" class="form-control"></textarea>
                                     </div>
                                     <div class="col-sm-12 col-md-12"><br/>
-                                        <a id="submit_btn" class="btn btn-primary" name="submit">Enviar Mensaje</a> <span id="notice" class="alert alert-warning alert-dismissable hidden" style="margin-left:20px;"></span>
-                                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                                        <input name="subject" id="subject" class="form-control" type="hidden" value="{{ $propiedad->NOMBRE }}" />
+                                        <input name="url" id="url" class="form-control" type="hidden" value="{{ action('HomeController@propiedad_ver', "2"); }}" />
+
+
+                                        <a id="submit_btn" class="btn btn-primary" name="submit">Enviar Mensaje</a>
+                                        <span id="notice" class="alert alert-warning alert-dismissable hidden" style="margin-left:20px;"></span>
                                     </div>
                                 </div>
                             </form>
@@ -117,7 +125,7 @@
                     
                     </div>
                     
-                    <div style="clear: both>"</div>
+                    <div style="clear: both"></div>
                 </div>
             </div>
         </div>

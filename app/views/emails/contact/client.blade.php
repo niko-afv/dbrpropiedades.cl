@@ -7,10 +7,15 @@
 		<h2>Hola {{ $userName }}</h2>
 
 		<div>
-			Gracias por contactarte con nosotros.
-			<br/>
+		    @if( isset($userUrl) )
+            <p>Te ha interesado una de nuestra propiedades.</p>
+            Propiedad : {{ $userUrl }}
+            @endif
 
+			<p>
+			Gracias por contactarte con nosotros.<br/>
 			En la brevedad nos comunicaremos contigo
+			</p>
 
 			Dbr Propiedades.
 		</div>

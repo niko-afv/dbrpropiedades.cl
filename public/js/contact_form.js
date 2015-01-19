@@ -1,11 +1,18 @@
 
 $(document).ready(function() {
-    $('#submit_btn').click(function(){ 
+
+    $("#contact").click(function(e){
+        e.preventDefault();
+        $("#formualario").fadeIn("slow");
+    });
+
+    $('#submit_btn').click(function(){
         //get input field values
         var user_name       = $('#name').val(); 
         var user_email      = $('#email').val();
         var user_subject    = $('#subject').val();
         var user_message    = $('#message').val();
+        var user_url        = $('#url').val();
         
         var notice     = $("#notice");
         var $req_fields    = "Por favor, llene todos los campos.";
@@ -44,18 +51,23 @@ $(document).ready(function() {
         {
             //data to be sent to server
             post_data = {'userName':user_name, 'userEmail':user_email, 'userSubject':user_subject, 'userMessage':user_message};
+
+            if(user_url != ""){
+                post_data = {'userName':user_name, 'userEmail':user_email, 'userSubject':user_subject, 'userMessage':user_message, 'userUrl':user_url};
+            }
+
             
             //Ajax post data to server
-            $.post('contact.php', post_data, function(response){  
+            $.post('/contacto', post_data, function(response){
                 
                 //load json data from server and output message     
-                if(response.type == 'error')
+                if(!response.success)
                 {
                     output = response.text;
 		notice.removeClass().html(output).addClass("alert alert-warning alert-dismissable").fadeIn(400);
                 }else{
                 
-                    output = response.text;
+                    output = response.message;
                     
                     //reset values in all input fields
                     $('#contact_form input').val(''); 

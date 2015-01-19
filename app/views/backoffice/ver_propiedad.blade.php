@@ -79,7 +79,7 @@
 
                                 <ul class="dropdown-menu dropdown-user">
                                     <li>
-                                        <a data-toggle="modal" href="/propiedades/editar/{{ $propiedad['id'] }}" title="Editar Propiedad">
+                                        <a data-toggle="modal" href="/admin/propiedades/editar/{{ $propiedad['id'] }}" title="Editar Propiedad">
                                             <i class="fa fa-edit"></i>
                                             &nbsp;&nbsp; Editar
                                         </a>

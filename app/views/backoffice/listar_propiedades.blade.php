@@ -72,9 +72,9 @@
                                             <td>
                                                 <a href="/admin/propiedades/ver/{{ $propiedad['id'] }}" alt="Ver Propiedad"><i class="fa fa-eye-slash text-navy"></i></a>
                                                 &nbsp;
-                                                <a href="#" alt=""><i class="fa fa-edit text-navy"></i></a>
+                                                <a href="/admin/propiedades/editar/{{ $propiedad['id'] }}" alt=""><i class="fa fa-edit text-navy"></i></a>
                                                 &nbsp;
-                                                <a href="#" alt="Eliminar Propiedad"><i class="fa fa-trash-o text-navy"></i></a>
+                                                <a href="/admin/propiedades/eliminar/{{ $propiedad['id'] }}" alt="Eliminar Propiedad"><i class="fa fa-trash-o text-navy"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach

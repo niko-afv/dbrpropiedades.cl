@@ -62,9 +62,24 @@ class HomeController extends BaseController {
 
     public function contacto_enviar(){
         $post = Input::get();
-        Mail::send('emails.auth.reminder', $post, function($message) {
-            $message->to(Input::get('UserEmail'), Input::get('userName'))->subject(Input::get('userSubject'));
-        });
+        try{
+            $team = Mail::send('emails.contact.team', $post, function($message) use ($post) {
+                $message->to('niko.afv@gmail.com', $post['userName'])->subject("Equipo DbrPropiedades - Contacto");
+            });
+
+            $client = Mail::send('emails.contact.client', $post, function($message) use ($post) {
+                $message->to($post['userEmail'], $post['userName'])->subject("Contacto - " . $post['userSubject']);
+            });
+
+            $response['message'] = "Su mensaje ha sido enviado con éxito!";
+            $response['success'] = TRUE;
+
+        }catch (Exception $e){
+            $response['message'] = $e->getMessage();
+            $response['success'] = FALSE;
+        }
+
+        return Response::json($response, 200);
     }
     
     public function simulador(){

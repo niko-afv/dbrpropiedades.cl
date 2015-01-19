@@ -2,14 +2,14 @@
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="/backoffice/img/profile_small.jpg" />
+                            <!--<img alt="image" class="img-circle" src="/backoffice/img/logo.JPG" />-->
                              </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="/backoffice#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"> {{ Auth::user()->nombre }} </strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                             </span> <span class="text-muted text-xs block">Administrador <b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="/admin/profile">Perfil</a></li>
-                                <li><a href="/" target="_blank">Sitio Web</a></li>
+                                <!--<li><a href="/admin/profile">Perfil</a></li>-->
+                                <li><a href="/" target="_blank">Ver Sitio Web</a></li>
                                 <li class="divider"></li>
                                 <li><a href="/logout">Salir</a></li>
                             </ul>

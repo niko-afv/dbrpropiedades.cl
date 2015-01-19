@@ -56,13 +56,13 @@
                         </div>
 
                     </div>
-                    <form role="form" method="POST" action="/admin/propiedades/crear">
+                    <form role="form" method="POST" action="@if(isset($id)) {{"/admin/propiedades/actualizar"}} @else {{ "/admin/propiedades/crear" }} @endif">
                         <div class="row">
                             <div class="col-sm-6 b-r">
 
-                                <div class="form-group"><label>Nombre</label> <input type="text" placeholder="" class="form-control" name="nombre" id="nombre" value=" @if(isset($nombre)) {{ $nombre }} @endif "></div>
+                                <div class="form-group"><label>Nombre</label> <input type="text" placeholder="" class="form-control" name="nombre" id="nombre" value="@if(isset($nombre)) {{ $nombre }} @endif"></div>
 
-                                <div class="form-group"><label>Dirección</label> <input type="text" placeholder="" class="form-control" name="direccion" id="direccion" value=" @if(isset($direccion)) {{ $direccion }} @endif "></div>
+                                <div class="form-group"><label>Dirección</label> <input type="text" placeholder="" class="form-control" name="direccion" id="direccion" value="@if(isset($direccion)) {{ $direccion }}@endif"></div>
 
                                 <div class="form-group"><label>Superficie Útil (m2)</label> <input type="text" placeholder="" class="form-control" name="s_util" id="s_util" value="@if(isset($s_util)) {{ $s_util }} @endif"></div>
 
@@ -70,7 +70,7 @@
 
                                 <div class="form-group"><label>Valor ($)</label> <input type="text" placeholder="" class="form-control" name="valor" id="valor" value="@if(isset($valor)) {{ $valor }} @endif"></div>
 
-                                <div class="form-group"><label>Gasto Común ($)</label> <input type="text" placeholder="" class="form-control" name="g_comun" id="g_comun" valor="@if(isset($g_comun)) {{ $g_comun }} @endif"></div>
+                                <div class="form-group"><label>Gasto Común ($)</label> <input type="text" placeholder="" class="form-control" name="g_comun" id="g_comun" value="@if(isset($g_comun)) {{ $g_comun }} @endif"></div>
 
                                 <div class="form-group">
                                     <label>Descripción</label>
@@ -84,12 +84,12 @@
                                 <div class="form-group">
                                     <label>Habitaciones</label>
                                     <select class="form-control" name="habitaciones">
-                                        <option value="1" @if(isset($habitaciones) && $abitaciones == 1) {{"selected"}} @endif>1</option>
-                                        <option value="2" @if(isset($habitaciones) && $abitaciones == 2) {{"selected"}} @endif>2</option>
-                                        <option value="3" @if(isset($habitaciones) && $abitaciones == 3) {{"selected"}} @endif>3</option>
-                                        <option value="4" @if(isset($habitaciones) && $abitaciones == 4) {{"selected"}} @endif>4</option>
-                                        <option value="5" @if(isset($habitaciones) && $abitaciones == 5) {{"selected"}} @endif>5</option>
-                                        <option value="6" @if(isset($habitaciones) && $abitaciones == 6) {{"selected"}} @endif>6</option>
+                                        <option value="1" @if(isset($habitaciones) && $habitaciones == 1) {{"selected"}} @endif>1</option>
+                                        <option value="2" @if(isset($habitaciones) && $habitaciones == 2) {{"selected"}} @endif>2</option>
+                                        <option value="3" @if(isset($habitaciones) && $habitaciones == 3) {{"selected"}} @endif>3</option>
+                                        <option value="4" @if(isset($habitaciones) && $habitaciones == 4) {{"selected"}} @endif>4</option>
+                                        <option value="5" @if(isset($habitaciones) && $habitaciones == 5) {{"selected"}} @endif>5</option>
+                                        <option value="6" @if(isset($habitaciones) && $habitaciones == 6) {{"selected"}} @endif>6</option>
                                     </select>
                                 </div>
 
@@ -141,8 +141,8 @@
                                     <label>Región</label>
                                     <select class="form-control" name="region" id="region">
                                         <option value="0">Seleccionar Región</option>
-                                        <option value="2">Metropolitana</option>
-                                        <option value="1">Valparaiso</option>
+                                        <option value="2" @if(isset($region) && $region == 2) {{"selected"}} @endif>Metropolitana</option>
+                                        <option value="1" @if(isset($region) && $region == 1) {{"selected"}} @endif>Valparaiso</option>
                                         <?php /*foreach($instituciones as $item => $val){ ?>
                                             <option value="<?php echo ($val['ID']);?>"><?php echo ($val['NOMBRE']);?></option>
                                         <?php }*/?>
@@ -160,6 +160,9 @@
                             <div class="col-sm-4"></div>
                             <div class="col-sm-4">
                                 <div class="form-group">
+                                    @if( isset($id) )
+                                    <input type="hidden" name="id" value="{{ $id }}"  />
+                                    @endif
                                     <button class="btn btn-lg btn-primary m-t-n-xs form-control" type="submit"><strong>@if(isset($id)) {{"Editar"}} @else {{ "Crear" }} @endif</strong></button>
                                 </div>
                             </div>

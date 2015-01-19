@@ -58,15 +58,16 @@
                              <figure style="background-image:url(images/serv_6.jpg)"></figure>
                         </div>
                         <div class="service_details">
-                             <h2 class="section_header skincolored"><b>Teaser</b>Element<small>has many styles!</small></h2>
-                             <a class="btn btn-primary" href="documentation/index.html">Just teasing you &nbsp; <i class="fa fa-code-fork"></i></a> </div>
+                            <h2 class="section_header skincolored"><b>Hector</b>Sepulveda<small>Fundador</small></h2>
+                             <!--<a class="btn btn-primary" href="documentation/index.html">Just teasing you &nbsp; <i class="fa fa-code-fork"></i></a>-->
+                         </div>
                    </div>
               </div>
          </div>
     </section>
     <section class="call_to_action"> <img alt="responsive" src="images/star.png">
-         <h3>give your creative ideas a boost</h3>
-         <h4>mouse over our team photos to see a cool effect!</h4>
+         <h3>Entregamos calidad en nuestro servicio</h3>
+         <h4>Contáctenos y nosotros hacemos el resto del trabajo!</h4>
     </section>
 @stop
      
